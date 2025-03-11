@@ -3,7 +3,7 @@
 - CS/
   - 工作问题记录.md
   - Andorid/
-    - adb.md
+    - [adb.md](CS/Andorid/adb.md)
     - Android.md
     - Compose.md
     - Gradle.md
