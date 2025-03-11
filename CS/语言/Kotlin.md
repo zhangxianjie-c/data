@@ -1,136 +1,142 @@
 kotlin改进了[[java]]许多缺点并提供了更多方便开发的语法糖与API，用于[[Android]] App开发
 ### Kotlin属性与类
 
-	Kotlin的声明与Java不同，Java的声明是类型跟变量名，常量用final修饰，而Kotlin的声明是通变var(常量)，val(常量)，而它的类型在变量名后，如下：val number:int = 200
+Kotlin的声明与Java不同，Java的声明是类型跟变量名，常量用final修饰，而Kotlin的声明是通变var(常量)，val(常量)，而它的类型在变量名后，如下：val number:int = 200
 
-	Kotlin有类型推导的功能：如果某个变量或常量的值可以确定他的类型，那么可以不用定义类型，
+Kotlin有类型推导的功能：如果某个变量或常量的值可以确定他的类型，那么可以不用定义类型，
 
 
-    在Java中声明对象需要通过new，如：People people = new People()。而在Kotlin中的对象声明可以直接声明，如：val people = People()。
+   在Java中声明对象需要通过new，如：People people = new People()。而在Kotlin中的对象声明可以直接声明，如：val people = People()。
 
-    在kotlin中的继承与实现都是通过：来实现，类是:T()接口是:T。
+   在kotlin中的继承与实现都是通过：来实现，类是:T()接口是:T。
 
-	关于属性赋值，getter () = 会使每次获取都是新的对象。
+关于属性赋值，getter () = 会使每次获取都是新的对象。
 
 ### Kotlin的空安全
 
-	Kotlin中的每个类型除了基础类型外，还会有一个与基础类型相对的非空类型如下，Int：不可空类型，Int?：可空类型，在给Int类型赋值时，不可以赋值null，或者是有可能为null的类型，如Int?，但是Int?可以赋值Int类型。比如，var a:Int = 10，var b:Int? = 20，b=a是正确写法，而a=b会不通过编译器的检查。
+Kotlin中的每个类型除了基础类型外，还会有一个与基础类型相对的非空类型如下，Int：不可空类型，Int?：可空类型，在给Int类型赋值时，不可以赋值null，或者是有可能为null的类型，如Int?，但是Int?可以赋值Int类型。比如，var a:Int = 10，var b:Int? = 20，b=a是正确写法，而a=b会不通过编译器的检查。
 
-	为了防止空指针，在使用T?(可为空类型，下文将用T?代替)类型时将会有一些约束，比如val textView:TextView = findViewById<TextView>(R.id.textView)
+为了防止空指针，在使用T?(可为空类型，下文将用T?代替)类型时将会有一些约束，比如
+```kotlin
+val textView:TextView = findViewById<TextView>(R.id.textView)
 
-	textView.setText("Hello World")这行代码将无法通过编译器检查
+textView.setText("Hello World")
+```
+这行代码将无法通过编译器检查
 
-	需要通过两种调用符修饰，！！强行调用符，？安全调用符，使用!!修饰的话会和java一样会出现空指针异常，使用?的话就是非空执行，如果该对象不为空的话，才会执行后面的操作。
+需要通过两种调用符修饰，！！强行调用符，？安全调用符，使用!!修饰的话会和java一样会出现空指针异常，使用?的话就是非空执行，如果该对象不为空的话，才会执行后面的操作。
 
-    在Java中，是通过注解来实现一个类型的可空和非空。@Nullable 表示可空类型 @NotNull @NonNul l 表示不可空类型。
+ 在Java中，是通过注解来实现一个类型的可空和非空。@Nullable 表示可空类型 @NotNull @NonNul l 表示不可空类型。
 
 ### Lateinit关键字
 
-	只能修饰 var 可读可写变量，
+* 只能修饰 var 可读可写变量，
 
-	关键字声明的变量的类型必须是不可空类型
+* 关键字声明的变量的类型必须是不可空类型
 
-	声明的变量不能有初始值
+* 声明的变量不能有初始值
 
-	声明的变量不能是基本数据类型
+* 声明的变量不能是基本数据类型
 
-	在构造器中初始化的属性不需要 lateinit 关键字
+* 在构造器中初始化的属性不需要 lateinit 关键字
 
 ### 类型的判断与转换
 
-	 is 判断属于某类型
+* is 判断属于某类型
 
-	 !is 判断不属于某类型
+* !is 判断不属于某类型
 
-	 as 类型强转，失败时抛出类型强转失败异常
+ * as 类型强转，失败时抛出类型强转失败异常
 
-	 as? 类型强转，但失败时不会抛出异常而是返回 null
+* as? 类型强转，但失败时不会抛出异常而是返回 null
 
 ### 构造器
 
-	使用constructor关键字声明构造器
+使用constructor关键字声明构造器
 
-	主构造：
+主构造：
 
-	Class User constructor(name:String){}
+Class User constructor(name:String){}
 
-	次构造：
+次构造：
 
-	Class User {
+Class User {
 
-	constructor()
+constructor()
 
-	}
+}
 
-	构造属性 在主构造参数前面加上 var/val 使构造参数同时成为成员变量
+构造属性 在主构造参数前面加上 var/val 使构造参数同时成为成员变量
 
-	Class User constructor(val name:String){}
+Class User constructor(val name:String){}
 
-	如果我们在构造器主动调用了了父类构造，那么在继承类的时候就不能在类的后面加上小括号
+如果我们在构造器主动调用了了父类构造，那么在继承类的时候就不能在类的后面加上小括号
 
-	constructor(context: Context) : this(context, null)
+constructor(context: Context) : this(context, null)
 
-	// 主动调用了父类的构造器
+// 主动调用了父类的构造器
 
-	constructor(context: Context, attr: AttributeSet?) : super(context, attr)
+constructor(context: Context, attr: AttributeSet?) : super(context, attr)
 
 ### init代码块
 
-	主构造不能包含任何的代码，初始化代码可以放到 init 代码块中
+主构造不能包含任何的代码，初始化代码可以放到 init 代码块中
 
-	在初始化的时候，初始化块会按照它们在「文件中出现的顺序」执行。
+在初始化的时候，初始化块会按照它们在「文件中出现的顺序」执行。
 
 ### 协程
 
-	是kotlin提供的轻量级线程机制，用于简化异步和并发任务的处理。可以使异步操作像同步操作一样编写，提高可读性。
+是kotlin提供的轻量级线程机制，用于简化异步和并发任务的处理。可以使异步操作像同步操作一样编写，提高可读性。
 
-	关于他和线程的区别，他是在已有线程中进行任务调度，可以在同一个线程中调度成多个携程，不需要为每个任务分配新线程，通过挂起和恢复机制实现异步操作。
+关于他和线程的区别，他是在已有线程中进行任务调度，可以在同一个线程中调度成多个携程，不需要为每个任务分配新线程，通过挂起和恢复机制实现异步操作。
 
-	协程通过launch和async启动，launch是一个不返回结果的协程，async是一个返回结果的协程，返回一个deferred对象，通过await方法获取协程的返回值
+协程通过launch和async启动，launch是一个不返回结果的协程，async是一个返回结果的协程，返回一个deferred对象，通过await方法获取协程的返回值
 
-	Suspend可以在协程内部暂停
+Suspend可以在协程内部暂停
 
-	runBlocking会阻塞当前线程 直到协程执行完成，通常是在主线程使用
+runBlocking会阻塞当前线程 直到协程执行完成，通常是在主线程使用
 
-	withContext用于在协程内部切换上下文线程
+withContext用于在协程内部切换上下文线程
 
-	常用的调度器：
+常用的调度器：
 
-	Dispatchers.main-主线程
+* Dispatchers.main-主线程
 
-	Dispatchers.IO-适用于IO操作
+* Dispatchers.IO-适用于IO操作
 
-	Dispatchers.Default-适用于计算密集型任务(数据处理、图像处理)，默认线程池调度器
+* Dispatchers.Default-适用于计算密集型任务(数据处理、图像处理)，默认线程池调度器
 
-	Dispatchers.Unconfined-没有固定线程的调度器，通常不依赖于具体线程的协程
+* Dispatchers.Unconfined-没有固定线程的调度器，通常不依赖于具体线程的协程
 
 ### 常用关键字
 
-	Infix：中缀表达式
+Infix：中缀表达式
 
-	infix fun Int.add(other: Int) = this + other
+infix fun Int.add(other: Int) = this + other
 
-	使用：
+使用：
+``` kotlin
+val result1 = 1 add 2  // 等同于 1.add(2)
 
-	val result1 = 1 add 2  // 等同于 1.add(2)
+operator：运算符重载
 
-	operator：运算符重载
+operator fun Int.plus(other: String) = "$this$other"
 
-	operator fun Int.plus(other: String) = "$this$other"
+// 使用：
 
-	// 使用：
+val result2 = 1 + "2"  // 输出："12"
 
-	val result2 = 1 + "2"  // 输出："12"
+// 3. inline：内联函数
+inline fun doSomething(action: () -> Unit) {
 
-	// 3. inline：内联函数
+    action()
 
-	inline fun doSomething(action: () -> Unit) {
+}
 
-	    action()
+// 编译时会将函数体直接插入到调用处
+```
 
-	}
 
-	// 编译时会将函数体直接插入到调用处
 
 ### 常用集合关键字
 
@@ -250,12 +256,12 @@ fun practicalExample() {
 
 ### Kotlin扩展函数
 
-	apply作用域中的this是对象本身，返回时对象本身，方便在对象的上下文执行操作，用于初始化对象和配置。
+apply作用域中的this是对象本身，返回时对象本身，方便在对象的上下文执行操作，用于初始化对象和配置。
 
-	let作用域it是对象本身，返回最后一个表达式的结果，通常用于链式操作，或是null检查
+let作用域it是对象本身，返回最后一个表达式的结果，通常用于链式操作，或是null检查
 
-	run作用域this是对象，返回最后一个表达式的结果，通常用于逻辑封装，执行操作并返回结果
+run作用域this是对象，返回最后一个表达式的结果，通常用于逻辑封装，执行操作并返回结果
 
-	with作用相当于run，但他不是扩展函数，需要传入一个对象
+with作用相当于run，但他不是扩展函数，需要传入一个对象
 
-	also作用域it是对象本身，返回也是本身，类似于apply，不过对对象本身操作没有apply方便，一般用于执行额外操作，比如日志
+also作用域it是对象本身，返回也是本身，类似于apply，不过对对象本身操作没有apply方便，一般用于执行额外操作，比如日志
