@@ -10,9 +10,18 @@ def generate_md_structure(root_dir):
     for root, dirs, files in os.walk(root_dir):
         level = root.replace(root_dir, "").count(os.sep)
         indent = "  " * level
-        md_content += f"{indent}- {os.path.basename(root)}/\n"
+        # 添加目录
+        if root == root_dir:
+            md_content += f"- {os.path.basename(root)}/\n"
+        else:
+            md_content += f"{indent}- {os.path.basename(root)}/\n"
+
+        # 添加文件（使用 Markdown 链接格式）
         for f in files:
-            md_content += f"{indent}  - {f}\n"
+            file_path = os.path.join(root, f).replace("\\", "/")  # 兼容 Windows 和 Linux
+            relative_path = os.path.relpath(file_path, root_dir).replace("\\", "/")
+            md_content += f"{indent}  - [{f}]({relative_path})\n"
+
     return md_content
 
 

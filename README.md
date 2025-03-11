@@ -1,38 +1,38 @@
 # 目录结构
 
 - CS/
-  - 工作问题记录.md
+  - [工作问题记录.md](工作问题记录.md)
   - Andorid/
-    - [adb.md](CS/Andorid/adb.md)
-    - Android.md
-    - Compose.md
-    - Gradle.md
-    - View绘制.md
-    - 三方框架与架构搭建.md
+    - [adb.md](Andorid/adb.md)
+    - [Android.md](Andorid/Android.md)
+    - [Compose.md](Andorid/Compose.md)
+    - [Gradle.md](Andorid/Gradle.md)
+    - [View绘制.md](Andorid/View绘制.md)
+    - [三方框架与架构搭建.md](Andorid/三方框架与架构搭建.md)
     - framework/
-      - AOSP.md
-      - Framework.md
+      - [AOSP.md](Andorid/framework/AOSP.md)
+      - [Framework.md](Andorid/framework/Framework.md)
   - Flutter/
-    - 命令.md
+    - [命令.md](Flutter/命令.md)
   - 工具/
-    - git.md
+    - [git.md](工具/git.md)
   - 系统/
     - Linex/
-      - Linex.md
-      - Ubuntu.md
+      - [Linex.md](系统/Linex/Linex.md)
+      - [Ubuntu.md](系统/Linex/Ubuntu.md)
   - 网络/
-    - Okhttp.md
-    - 网络.md
+    - [Okhttp.md](网络/Okhttp.md)
+    - [网络.md](网络/网络.md)
     - 传输层/
-      - TCP.md
-      - UDP.md
+      - [TCP.md](网络/传输层/TCP.md)
+      - [UDP.md](网络/传输层/UDP.md)
     - 应用层/
-      - Http.md
+      - [Http.md](网络/应用层/Http.md)
   - 语言/
-    - C++.md
-    - C.md
-    - Java.md
-    - Kotlin.md
-    - python.md
-    - Vue.md
-    - 语言.md
+    - [C++.md](语言/C++.md)
+    - [C.md](语言/C.md)
+    - [Java.md](语言/Java.md)
+    - [Kotlin.md](语言/Kotlin.md)
+    - [python.md](语言/python.md)
+    - [Vue.md](语言/Vue.md)
+    - [语言.md](语言/语言.md)
