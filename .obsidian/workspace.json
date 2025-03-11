@@ -11,14 +11,10 @@
             "id": "54671b0824bc921f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "CS/Andorid/framework/AOSP.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "AOSP"
+              "title": "新标签页"
             }
           }
         ]
@@ -165,6 +161,17 @@
   },
   "active": "54671b0824bc921f",
   "lastOpenFiles": [
+    "CS/Andorid/framework/AOSP.md",
+    "CS/Android/framework/Framework.md",
+    "CS/Android/framework/AOSP.md",
+    "CS/Android/三方框架与架构搭建.md",
+    "CS/Android/View绘制.md",
+    "CS/Android/Gradle.md",
+    "CS/Android/Compose.md",
+    "CS/Android/Android.md",
+    "CS/Android/framework",
+    "CS/Android/adb.md",
+    "CS/Android",
     "note/assets/Pasted image 20250122150034.png",
     "note/assets/Pasted image 20250122150030.png",
     "note/assets/Pasted image 20250122145110.png",
@@ -193,24 +200,13 @@
     "note/CS/网络/应用层",
     "note/CS/网络/传输层",
     "note/CS/网络/Okhttp.md",
-    "note/CS/Flutter/命令.md",
-    "note/CS/工具/git.md",
-    "note/CS/Andorid/三方框架与架构搭建.md",
-    "note/CS/Andorid/View绘制.md",
-    "note/CS/Andorid/Compose.md",
-    "note/CS/Andorid/Gradle.md",
     "note/CS/Andorid/framework",
-    "note/CS/Andorid/Android.md",
-    "note/CS/Andorid/adb.md",
     "note/CS/系统",
     "note/CS/语言",
-    "note/CS/网络",
-    "note/CS/Flutter",
     "未命名.canvas",
     "assets/Pasted image 20250122150030.png",
     "assets/Pasted image 20250122150034.png",
     "assets/Pasted image 20250122145110.png",
-    "assets/Pasted image 20250122145027.png",
-    "assets/Pasted image 20250122143144.png"
+    "assets/Pasted image 20250122145027.png"
   ]
 }

@@ -7,20 +7,26 @@ OUTPUT_FILE = "README.md"
 
 def generate_md_structure(root_dir):
     md_content = "# 目录结构\n\n"
+    root_basename = os.path.basename(root_dir)  # 获取根目录名称
+    md_content += f"- {root_basename}/\n"
+
     for root, dirs, files in os.walk(root_dir):
+        # 计算当前层级
         level = root.replace(root_dir, "").count(os.sep)
-        indent = "  " * level
-        # 添加目录
-        if root == root_dir:
-            md_content += f"- {os.path.basename(root)}/\n"
-        else:
+        indent = "  " * (level + 1)  # 增加缩进使其对齐
+
+        # 获取相对路径，并确保保留根目录
+        relative_root = os.path.relpath(root, os.path.dirname(root_dir)).replace("\\", "/")
+
+        # 添加子目录
+        if root != root_dir:
             md_content += f"{indent}- {os.path.basename(root)}/\n"
 
-        # 添加文件（使用 Markdown 链接格式）
+        # 添加文件，保持完整路径
         for f in files:
-            file_path = os.path.join(root, f).replace("\\", "/")  # 兼容 Windows 和 Linux
-            relative_path = os.path.relpath(file_path, root_dir).replace("\\", "/")
-            md_content += f"{indent}  - [{f}]({relative_path})\n"
+            file_path = os.path.join(root, f).replace("\\", "/")  # 兼容 Windows
+            full_relative_path = os.path.relpath(file_path, os.path.dirname(root_dir)).replace("\\", "/")
+            md_content += f"{indent}  - [{f}]({full_relative_path})\n"
 
     return md_content
 
